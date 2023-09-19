@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState}  from 'react';
+import './index.css';
+import styled from 'styled-components';
+import { PasswordDisplay, PasswordConfiguration } from './components';
+
+const StyledApp = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 540px;
+height: auto;
+`;
+
+const Title = styled.div`
+color: var(--color-grey);
+font-size: var(--text-md);
+`;
 
 function App() {
+   const [password, setPassword] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledApp>
+      <Title>Password Generator</Title>
+      <PasswordDisplay password={password} />
+      <PasswordConfiguration setPassword={setPassword} />
+    </StyledApp>
+  )
 }
 
 export default App;
